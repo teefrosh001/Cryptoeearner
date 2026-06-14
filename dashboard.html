@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CryptoEarner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-72 bg-zinc-900 border-r border-zinc-800 p-6 hidden lg:flex flex-col">
+            <div class="flex items-center gap-3 mb-12">
+                <div class="w-9 h-9 bg-yellow-400 rounded-2xl flex items-center justify-center text-xl text-zinc-900 font-bold">C</div>
+                <span class="heading-font text-2xl font-bold">CryptoEarner</span>
+            </div>
+            <nav class="space-y-2 flex-1">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 bg-zinc-800 rounded-2xl text-yellow-400"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-800 rounded-2xl"><i class="fas fa-chart-line"></i> Investments</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-800 rounded-2xl"><i class="fas fa-wallet"></i> Wallet</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-800 rounded-2xl"><i class="fas fa-history"></i> History</a>
+            </nav>
+            <div class="pt-8 border-t border-zinc-700">
+                <button onclick="logout()" class="flex w-full items-center gap-3 px-4 py-3 text-red-400 hover:bg-zinc-800 rounded-2xl"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <header class="bg-zinc-900 border-b border-zinc-800 px-8 py-6 flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <h1 class="text-3xl font-semibold heading-font">Dashboard</h1>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-3 bg-zinc-800 px-5 py-2 rounded-3xl">
+                        <div class="text-green-400"><i class="fas fa-circle"></i></div>
+                        <span class="text-sm">Online</span>
+                    </div>
+                    <div onclick="logout()" class="cursor-pointer">Demo User</div>
+                </div>
+            </header>
+
+            <div class="p-8">
+                <!-- Balance -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-br from-zinc-900 to-zinc-800 p-8 rounded-3xl border border-yellow-400/30">
+                        <div class="flex justify-between">
+                            <div>
+                                <div class="text-sm text-zinc-400">Total Balance</div>
+                                <div id="balance" class="text-5xl font-bold mt-3">$18,472.65</div>
+                            </div>
+                            <i class="fas fa-wallet text-5xl text-yellow-400/70"></i>
+                        </div>
+                        <div class="mt-8 text-green-400 text-sm flex items-center gap-2"><i class="fas fa-arrow-trend-up"></i> +12.4% this month</div>
+                    </div>
+                    <!-- More cards -->
+                </div>
+
+                <!-- Active Investments -->
+                <div class="mt-12">
+                    <h2 class="text-xl font-semibold mb-6 flex items-center gap-3"><i class="fas fa-chart-pie"></i> Active Investments</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-zinc-900 p-6 rounded-3xl">
+                            <div class="flex justify-between mb-4">
+                                <div class="font-medium">Gold Plan</div>
+                                <div class="text-green-400">Active</div>
+                            </div>
+                            <div class="text-4xl font-bold">$12,500</div>
+                            <div class="h-2 bg-zinc-700 rounded-full mt-6 mb-1">
+                                <div class="bg-green-400 h-2 rounded-full w-[65%]"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-zinc-400">
+                                <div>65% Complete</div>
+                                <div>18 days left</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <button onclick="alert('Deposit request submitted in demo!')" class="px-10 py-4 bg-yellow-400 text-zinc-900 rounded-3xl font-semibold">Make a Deposit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logout() { window.location.href = 'index.html'; }
+    </script>
+</body>
+</html>

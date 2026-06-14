@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - CryptoEarner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100">
+    <div class="flex">
+        <div class="w-64 bg-black h-screen p-6 fixed">
+            <div class="flex items-center gap-3 mb-12">
+                <span class="heading-font text-2xl font-bold text-yellow-400">ADMIN</span>
+            </div>
+            <div class="space-y-1 text-sm">
+                <div class="px-4 py-3 bg-zinc-900 rounded-2xl font-medium">Dashboard</div>
+                <div class="px-4 py-3 hover:bg-zinc-900 rounded-2xl">Users</div>
+                <div class="px-4 py-3 hover:bg-zinc-900 rounded-2xl">Deposits</div>
+                <div class="px-4 py-3 hover:bg-zinc-900 rounded-2xl">Withdrawals</div>
+                <div class="px-4 py-3 hover:bg-zinc-900 rounded-2xl">Plans</div>
+            </div>
+        </div>
+        <div class="ml-64 flex-1 p-8">
+            <h1 class="text-4xl font-bold mb-10">Admin Dashboard</h1>
+            
+            <div class="grid grid-cols-4 gap-6 mb-12">
+                <div class="bg-zinc-900 p-6 rounded-3xl">
+                    <div class="text-zinc-400">Total Users</div>
+                    <div class="text-5xl font-bold mt-2">1,842</div>
+                </div>
+                <div class="bg-zinc-900 p-6 rounded-3xl">
+                    <div class="text-zinc-400">Pending Deposits</div>
+                    <div class="text-5xl font-bold mt-2 text-amber-400">14</div>
+                </div>
+            </div>
+
+            <div class="bg-zinc-900 rounded-3xl p-8">
+                <h2 class="font-semibold mb-6">Recent Transactions</h2>
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-zinc-700">
+                            <th class="py-4 text-left">User</th>
+                            <th class="py-4 text-left">Type</th>
+                            <th class="py-4 text-left">Amount</th>
+                            <th class="py-4 text-left">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tx-table">
+                        <!-- JS filled -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fake data
+        const tx = [
+            ["john@example.com", "Deposit", "$2,400", "Pending"],
+            ["sarah@demo.com", "Withdrawal", "$890", "Approved"]
+        ];
+        document.getElementById('tx-table').innerHTML = tx.map(row => `
+            <tr class="border-b border-zinc-800">
+                <td class="py-5">${row[0]}</td>
+                <td class="py-5">${row[1]}</td>
+                <td class="py-5 font-medium">${row[2]}</td>
+                <td class="py-5"><span class="px-4 py-1 bg-green-400/10 text-green-400 rounded-3xl text-xs">${row[3]}</span></td>
+            </tr>
+        `).join('');
+    </script>
+</body>
+</html>

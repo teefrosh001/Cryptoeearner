@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Plans - CryptoEarner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+        .gold-gradient { background: linear-gradient(90deg, #facc15, #eab308); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100">
+    <!-- Navbar same as index -->
+    <nav class="bg-zinc-900 border-b border-zinc-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-yellow-400 rounded-2xl flex items-center justify-center text-zinc-900 font-bold text-2xl">C</div>
+                <span class="heading-font text-3xl font-bold tracking-tighter gold-gradient">CryptoEarner</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="nav-link text-zinc-300 hover:text-white">Home</a>
+                <a href="about.html" class="nav-link text-zinc-300 hover:text-white">About</a>
+                <a href="plans.html" class="nav-link text-yellow-400">Plans</a>
+                <a href="faq.html" class="nav-link text-zinc-300 hover:text-white">FAQ</a>
+                <a href="contact.html" class="nav-link text-zinc-300 hover:text-white">Contact</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="login.html" class="px-6 py-2.5 text-sm font-semibold border border-zinc-700 hover:border-zinc-400 rounded-2xl">Login</a>
+                <a href="register.html" class="px-6 py-2.5 bg-yellow-400 text-zinc-900 font-semibold rounded-2xl">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-6 py-16">
+        <h1 class="text-6xl heading-font font-bold text-center mb-4">Investment Plans</h1>
+        <p class="text-center text-zinc-400 max-w-md mx-auto mb-16">Select a plan that aligns with your investment goals and risk tolerance.</p>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" id="all-plans">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <script>
+        const plans = [
+            { name: "Starter", min: 100, max: 999, duration: "7 Days", profit: "8%", roi: "Daily 1.14%", desc: "Perfect for beginners. Low risk entry." },
+            { name: "Silver", min: 1000, max: 4999, duration: "14 Days", profit: "18%", roi: "Daily 1.28%", desc: "Balanced growth for intermediate investors." },
+            { name: "Gold", min: 5000, max: 24999, duration: "30 Days", profit: "35%", roi: "Daily 1.16%", desc: "Our most popular plan. Strong returns." },
+            { name: "VIP", min: 25000, max: 100000, duration: "60 Days", profit: "75%", roi: "Daily 1.25%", desc: "Premium plan for serious investors." }
+        ];
+
+        function renderPlans() {
+            const container = document.getElementById('all-plans');
+            container.innerHTML = plans.map((plan, i) => `
+                <div class="bg-zinc-900 border ${i === 2 ? 'border-yellow-400 scale-105' : 'border-zinc-800'} rounded-3xl p-8 card-hover relative">
+                    ${i === 2 ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-zinc-900 text-xs font-bold px-6 py-1 rounded-3xl">MOST POPULAR</div>' : ''}
+                    <div class="text-center">
+                        <div class="text-yellow-400 uppercase tracking-widest text-sm font-semibold">${plan.name}</div>
+                        <div class="text-6xl font-bold mt-6 mb-1">${plan.profit}</div>
+                        <div class="text-zinc-400">Total Return</div>
+                        <div class="mt-8 text-2xl font-medium">${plan.duration}</div>
+                    </div>
+                    <div class="my-10 border-t border-dashed border-zinc-700"></div>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex justify-between"><span class="text-zinc-400">Minimum Investment</span><span class="font-medium">$${plan.min}</span></div>
+                        <div class="flex justify-between"><span class="text-zinc-400">Maximum Investment</span><span class="font-medium">$${plan.max}</span></div>
+                        <div class="flex justify-between"><span class="text-zinc-400">Daily ROI</span><span class="font-medium">${plan.roi}</span></div>
+                    </div>
+                    <button onclick="investNow('${plan.name}')" class="w-full mt-10 py-4 bg-yellow-400 hover:bg-amber-300 text-zinc-900 font-semibold rounded-2xl">Invest Now</button>
+                </div>
+            `).join('');
+        }
+
+        function investNow(plan) {
+            alert(`Redirecting to create investment in ${plan} plan. (Demo)`);
+            window.location.href = 'login.html';
+        }
+
+        renderPlans();
+    </script>
+</body>
+</html>
